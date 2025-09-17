@@ -4,7 +4,7 @@ interface Teacher {
   fullTimeEmployee: boolean;
   yearsOfExperience?: number;
   location: string;
-  [propName: string]: any; // This is the index signature
+  [propName: string]: any;
 }
 
 interface Directors extends Teacher {
@@ -20,5 +20,3 @@ const director1: Directors = {
 };
 
 console.log(director1);
-
-console.log(teacher3);
