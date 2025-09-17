@@ -7,14 +7,6 @@ interface Teacher {
   [propName: string]: any; // This is the index signature
 }
 
-const teacher3: Teacher = {
-  firstName: 'John',
-  fullTimeEmployee: false,
-  lastName: 'Doe',
-  location: 'London',
-  contract: false,
-};
-
 interface Directors extends Teacher {
   numberOfReports: number;
 }
@@ -28,4 +20,5 @@ const director1: Directors = {
 };
 
 console.log(director1);
+
 console.log(teacher3);
