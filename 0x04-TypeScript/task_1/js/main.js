@@ -12,5 +12,9 @@ var director1 = {
     fullTimeEmployee: true,
     numberOfReports: 17,
 };
-console.log(director1);
-console.log(teacher3);
+var printTeacher = function (firstName, lastName) {
+    return "".concat(firstName[0], ". ").concat(lastName);
+};
+// Example usage:
+console.log(printTeacher("John", "Doe")); // Outputs: J. Doe
+console.log(printTeacher("Jane", "Smith")); // Outputs: J. Smith
