@@ -1,4 +1,35 @@
-// Implement the Director class
+// ---- Data Objects ----
+var teacher3 = {
+    firstName: 'John',
+    fullTimeEmployee: false,
+    lastName: 'Doe',
+    location: 'London',
+    contract: false,
+};
+var director1 = {
+    firstName: 'John',
+    lastName: 'Doe',
+    location: 'London',
+    fullTimeEmployee: true,
+    numberOfReports: 17,
+};
+// ---- Function Implementations ----
+var printTeacher = function (firstName, lastName) {
+    return "".concat(firstName[0], ". ").concat(lastName);
+};
+var StudentClass = /** @class */ (function () {
+    function StudentClass(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    StudentClass.prototype.workOnHomework = function () {
+        return "Currently working";
+    };
+    StudentClass.prototype.displayName = function () {
+        return this.firstName;
+    };
+    return StudentClass;
+}());
 var Director = /** @class */ (function () {
     function Director() {
     }
@@ -13,7 +44,6 @@ var Director = /** @class */ (function () {
     };
     return Director;
 }());
-// Implement the Teacher class
 var Teacher = /** @class */ (function () {
     function Teacher() {
     }
@@ -28,22 +58,15 @@ var Teacher = /** @class */ (function () {
     };
     return Teacher;
 }());
-// Create the createEmployee function
 function createEmployee(salary) {
     if (typeof salary === 'number' && salary < 500) {
         return new Teacher();
     }
     return new Director();
 }
-// Type guard for Director
 function isDirector(employee) {
-    return employee.workDirectorTasks !== undefined;
+    return 'workDirectorTasks' in employee;
 }
-// Type guard for Teacher
-function isTeacher(employee) {
-    return employee.workTeacherTasks !== undefined;
-}
-// Execute the work based on the employee type
 function executeWork(employee) {
     if (isDirector(employee)) {
         return employee.workDirectorTasks();
@@ -52,9 +75,25 @@ function executeWork(employee) {
         return employee.workTeacherTasks();
     }
 }
-// Example Usage:
-console.log(createEmployee(200)); // Should return Teacher instance
-console.log(createEmployee(1000)); // Should return Director instance
-console.log(createEmployee('$500')); // Should return Director instance
-console.log(executeWork(createEmployee(200))); // Expected output: Getting to work
-console.log(executeWork(createEmployee(1000))); // Expected output: Getting to director tasks
+function teachClass(todayClass) {
+    if (todayClass === 'Math') {
+        return 'Teaching Math';
+    }
+    else {
+        return 'Teaching History';
+    }
+}
+// Example usage to test everything
+console.log(teacher3);
+console.log(director1);
+console.log(printTeacher("John", "Doe"));
+var student1 = new StudentClass("John", "Doe");
+console.log(student1.displayName());
+console.log(student1.workOnHomework());
+console.log(createEmployee(200));
+console.log(createEmployee(1000));
+console.log(createEmployee('$500'));
+console.log(executeWork(createEmployee(200)));
+console.log(executeWork(createEmployee(1000)));
+console.log(teachClass('Math'));
+console.log(teachClass('History'));
